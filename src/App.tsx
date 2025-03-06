@@ -3,7 +3,10 @@ import { useCallback, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Alert from "./components/alert/Alert";
 import { Header } from "./components/header/Header";
+<<<<<<< HEAD
 // import cookies from "js-cookie";
+=======
+>>>>>>> quita-dep
 const apiURL = process.env.REACT_APP_BACKEND;
 
 const App: React.FC = () => {
@@ -120,7 +123,11 @@ const App: React.FC = () => {
           .catch((error) => console.error("user is not logged in", error));
       }
     }, //eslint-disable-next-line
+<<<<<<< HEAD
     [jwtToken, toggleRefresh, navigate],
+=======
+    [jwtToken, toggleRefresh],
+>>>>>>> quita-dep
   );
 
   return (
