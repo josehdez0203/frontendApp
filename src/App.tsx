@@ -18,6 +18,7 @@ const App: React.FC = () => {
     access_token: string;
     refresh_token: string;
   };
+
   const setAuth = (data: dataAuth) => {
     localStorage.setItem("refresh_token", data.refresh_token);
     localStorage.setItem("access_token", data.access_token);
