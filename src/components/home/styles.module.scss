@@ -1,0 +1,13 @@
+.main {
+  margin: auto;
+  text-align: center;
+  max-width: 1024px;
+  .titulo {
+    text-align: center;
+    color: blue;
+  }
+  .detalle {
+    text-align: justify;
+    line-height: 1.3;
+  }
+}

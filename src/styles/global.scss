@@ -10,4 +10,39 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+  // background-color: red;
+  a {
+    color: whitesmoke;
+    text-decoration: none;
+    &:hover {
+      color: yellow;
+    }
+  }
+  .form-control {
+    width: calc(100% - 5px);
+    margin: 5px auto;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #777;
+  }
+  .btn {
+    padding: 3px 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid white;
+    &:hover {
+      border: 1px solid red;
+    }
+  }
+
+  .btn-success {
+    background-color: greenyellow;
+  }
+  .d-none {
+    display: none;
+  }
+  .alert-danger {
+    color: red;
+  }
 }
