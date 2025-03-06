@@ -3,8 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Alert from "./components/alert/Alert";
 import { Header } from "./components/header/Header";
-import cookies from "js-cookie";
-import { type } from "os";
 const apiURL = process.env.REACT_APP_BACKEND;
 
 const App: React.FC = () => {
@@ -88,37 +86,40 @@ const App: React.FC = () => {
         clearInterval(tickInterval);
         // setTicking(false);
       }
-    },
+    }, //eslint-disable-next-line
     [tickInterval],
   );
 
-  useEffect(() => {
-    if (jwtToken === "") {
-      let payload = {
-        token: localStorage.getItem("refresh_token"),
-      };
-      const requestOptions: RequestInit = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(payload),
-      };
+  useEffect(
+    () => {
+      if (jwtToken === "") {
+        let payload = {
+          token: localStorage.getItem("refresh_token"),
+        };
+        const requestOptions: RequestInit = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(payload),
+        };
 
-      fetch(`${apiURL}/api/refresh`, requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.access_token) {
-            setAuth(data);
-            setJwtToken(data.access_token);
-          } else {
-            navigate("/login");
-          }
-        })
-        .catch((error) => console.error("user is not logged in", error));
-    }
-  }, [jwtToken, toggleRefresh]);
+        fetch(`${apiURL}/api/refresh`, requestOptions)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.access_token) {
+              setAuth(data);
+              setJwtToken(data.access_token);
+            } else {
+              navigate("/login");
+            }
+          })
+          .catch((error) => console.error("user is not logged in", error));
+      }
+    }, //eslint-disable-next-line
+    [jwtToken, toggleRefresh],
+  );
 
   return (
     <div className="container">
